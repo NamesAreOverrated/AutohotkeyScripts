@@ -15,17 +15,17 @@ RControl::CapsLock
 
 ; numpad
 `::`
-` & L::Numpad4
-` & `;::Numpad5
-` & '::Numpad6
+` & j::Numpad4
+` & k::Numpad5
+` & l::Numpad6
 
-` & P::Numpad7
-` & [::Numpad8
-` & ]::Numpad9
+` & i::Numpad7
+` & o::Numpad8
+` & p::Numpad9
 
-` & ,::Numpad1
-` & .::Numpad2
-` & /::Numpad3
+` & n::Numpad1
+` & m::Numpad2
+` & ,::Numpad3
 
 ` & Space::Numpad0
 ` & RAlt::NumpadDot
