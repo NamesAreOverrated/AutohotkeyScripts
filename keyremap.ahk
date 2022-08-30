@@ -115,6 +115,32 @@ Tab & l::
     }
 Return
 
-Tab & Space:: Click 
+Tab & f:: 
+    Loop{
+        If GetkeyState("f","P"){
+            Send, {WheelUp} 
+            Sleep, 100
+        }
+        Else{
+            Break
+        }
+    }
+Return
+Tab & b::
+    Loop{
+        If GetkeyState("b","P"){
+            Send, {WheelDown} 
+            Sleep, 100
+        }
+        Else{
+            Break
+        }
+    }
+Return
+Tab & Space:: 
+    Click,D 
+    KeyWait,Space
+    Click,U
+Return
 Tab & RAlt::Click,Right
 Return
