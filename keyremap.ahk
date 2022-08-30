@@ -3,6 +3,9 @@
 SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 
+Coordmode, Mouse, Screen
+MouseMutiplier:=1f
+
 ; arrow key
 SetCapsLockState, AlwaysOff
 
@@ -19,13 +22,12 @@ l::Right
     IF A_ThisHotkey = *CapsLock
         Send, {Escape}
 Return
-
 RControl::CapsLock
+
 ;` key rebind
 Escape::`
 
 ; numpad
-
 Escape & j::Numpad4
 Escape & k::Numpad5
 Escape & l::Numpad6
@@ -41,3 +43,78 @@ Escape & ,::Numpad3
 Escape & Space::Numpad0
 Escape & RAlt::NumpadDot
 
+;volume
+Escape & +::Volume_Up
+Escape & -:: Volume_Down
+Escape & BackSpace::Volume_Mute
+
+;mouse 
+Tab::Tab
+
+Tab & j::
+    Loop{
+        If GetkeyState("j","P"){
+            MouseGetPos, X, Y
+            Y+=5*MouseMutiplier
+            MouseMutiplier+=0.2
+            DllCall("SetCursorPos", "int", X, "int", Y)
+            Sleep, 15
+        }
+        Else{
+            MouseMutiplier=1
+            Break
+        }
+    }
+Return 
+
+Tab & k::
+    Loop{
+        If GetkeyState("k","P"){
+            MouseGetPos, X, Y
+            Y-=5*MouseMutiplier
+            MouseMutiplier+=0.2
+            DllCall("SetCursorPos", "int", X, "int", Y)
+            Sleep, 15
+        }
+        Else{
+            MouseMutiplier=1
+            Break
+        }
+    }
+Return
+
+Tab & h::
+    Loop{
+        If GetkeyState("h","P"){
+            MouseGetPos, X, Y
+            X-=5*MouseMutiplier
+            MouseMutiplier+=0.2
+            DllCall("SetCursorPos", "int", X, "int", Y)
+            Sleep, 15
+        }
+        Else{
+            MouseMutiplier=1
+            Break
+        }
+    }
+Return
+
+Tab & l::
+    Loop{
+        If GetkeyState("l","P"){
+            MouseGetPos, X, Y
+            X+=5*MouseMutiplier
+            MouseMutiplier+=0.2
+            DllCall("SetCursorPos", "int", X, "int", Y)
+            Sleep, 15
+        }
+        Else{
+            MouseMutiplier=1
+            Break
+        }
+    }
+Return
+
+Tab & Space:: Click 
+Tab & RAlt::Click,Right
+Return
