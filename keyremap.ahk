@@ -20,24 +20,24 @@ l::Right
         Send, {Escape}
 Return
 
+RControl::CapsLock
 ;` key rebind
 Escape::`
 
-RControl::CapsLock
-
 ; numpad
-`::`
-` & j::Numpad4
-` & k::Numpad5
-` & l::Numpad6
 
-` & i::Numpad7
-` & o::Numpad8
-` & p::Numpad9
+Escape & j::Numpad4
+Escape & k::Numpad5
+Escape & l::Numpad6
 
-` & n::Numpad1
-` & m::Numpad2
-` & ,::Numpad3
+Escape & i::Numpad7
+Escape & o::Numpad8
+Escape & p::Numpad9
 
-` & Space::Numpad0
-` & RAlt::NumpadDot
+Escape & n::Numpad1
+Escape & m::Numpad2
+Escape & ,::Numpad3
+
+Escape & Space::Numpad0
+Escape & RAlt::NumpadDot
+
