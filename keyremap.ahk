@@ -4,13 +4,25 @@ SendMode Input ; Recommended for new scripts due to its superior speed and relia
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 
 ; arrow key
-CapsLock & j::Down
-CapsLock & k::Up
-CapsLock & l:: Right
-CapsLock & h::Left
+SetCapsLockState, AlwaysOff
 
-;escapremap
-CapsLock::Esc
+#If GetKeyState("CapsLock", "P")
+    h::Left
+j::Down
+k::Up
+l::Right
+#If
+
+;escape key
+*CapsLock::
+    KeyWait, CapsLock
+    IF A_ThisHotkey = *CapsLock
+        Send, {Escape}
+Return
+
+;` key rebind
+Escape::`
+
 RControl::CapsLock
 
 ; numpad
