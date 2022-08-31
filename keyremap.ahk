@@ -14,6 +14,12 @@ SetCapsLockState, AlwaysOff
 j::Down
 k::Up
 l::Right
+
+p::PgUp
+n::PgDn
+i::Home
+a::End
+d::Delete
 #If
 
 ;escape key
