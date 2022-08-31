@@ -43,13 +43,14 @@ Escape & ,::Numpad3
 Escape & Space::Numpad0
 Escape & RAlt::NumpadDot
 
+;Tab
+Tab::Tab
 ;volume
-Escape & +::Volume_Up
-Escape & -:: Volume_Down
-Escape & BackSpace::Volume_Mute
+Tab & +::Volume_Up
+Tab & -:: Volume_Down
+Tab & BackSpace::Volume_Mute
 
 ;mouse 
-Tab::Tab
 
 Tab & j::
     Loop{
