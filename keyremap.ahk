@@ -1,64 +1,51 @@
-﻿#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases.
-; #Warn  ; Enable warnings to assist with detecting common errors.
-SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
+﻿#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases. ; 
+#Warn ; Enable warnings to assist with detecting common errors. SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 
 Coordmode, Mouse, Screen
 MouseMutiplier:=1f
+RestoreTab:=False
 
 ; arrow key
 SetCapsLockState, AlwaysOff
 
-#If GetKeyState("CapsLock", "P")
-    h::Left
-j::Down
-k::Up
-l::Right
+CapsLock::Escape
+CapsLock & h::Left
+CapsLock & j::Down
+CapsLock & k::Up
+CapsLock & l::Right
 
-p::PgUp
-n::PgDn
-i::Home
-a::End
-d::Delete
-#If
+CapsLock & p::PgUp
+CapsLock & n::PgDn
+CapsLock & i::Home
+CapsLock & a::End
+CapsLock & d::Delete
 
-;escape key
-*CapsLock::
-    KeyWait, CapsLock
-    IF A_ThisHotkey = *CapsLock
-        Send, {Escape}
-Return
+CapsLock & 1::F1
+CapsLock & 2::F2
+CapsLock & 3::F3
+CapsLock & 4::F4
+CapsLock & 5::F5
+CapsLock & 6::F6
+CapsLock & 7::F7
+CapsLock & 8::F8
+CapsLock & 9::F9
+CapsLock & 0::F10
+CapsLock & -::F11
+CapsLock & =::F12
+
 RControl::CapsLock
 
 ;` key rebind
 Escape::`
 
-; numpad
-Escape & j::Numpad4
-Escape & k::Numpad5
-Escape & l::Numpad6
-
-Escape & i::Numpad7
-Escape & o::Numpad8
-Escape & p::Numpad9
-
-Escape & n::Numpad1
-Escape & m::Numpad2
-Escape & ,::Numpad3
-
-Escape & Space::Numpad0
-Escape & RAlt::NumpadDot
-
-;Tab
-Tab::Tab
-;volume
-Tab & +::Volume_Up
-Tab & -:: Volume_Down
-Tab & BackSpace::Volume_Mute
+; volume
+~Tab & +::Volume_Up
+~Tab & -:: Volume_Down
+~Tab & backSpace::Volume_Mute
 
 ;mouse 
-
-Tab & j::
+Escape & j::
     Loop{
         If GetkeyState("j","P"){
             MouseGetPos, X, Y
@@ -74,7 +61,7 @@ Tab & j::
     }
 Return 
 
-Tab & k::
+Escape & k::
     Loop{
         If GetkeyState("k","P"){
             MouseGetPos, X, Y
@@ -90,7 +77,7 @@ Tab & k::
     }
 Return
 
-Tab & h::
+Escape & h::
     Loop{
         If GetkeyState("h","P"){
             MouseGetPos, X, Y
@@ -106,7 +93,7 @@ Tab & h::
     }
 Return
 
-Tab & l::
+Escape & l::
     Loop{
         If GetkeyState("l","P"){
             MouseGetPos, X, Y
@@ -122,7 +109,7 @@ Tab & l::
     }
 Return
 
-Tab & f:: 
+Escape & f:: 
     Loop{
         If GetkeyState("f","P"){
             Send, {WheelUp} 
@@ -133,7 +120,7 @@ Tab & f::
         }
     }
 Return
-Tab & b::
+Escape & b::
     Loop{
         If GetkeyState("b","P"){
             Send, {WheelDown} 
@@ -144,10 +131,9 @@ Tab & b::
         }
     }
 Return
-Tab & Space:: 
+Escape & Space:: 
     Click,D 
     KeyWait,Space
     Click,U
 Return
-Tab & RAlt::Click,Right
-Return
+Escape & RAlt::Click,Right
