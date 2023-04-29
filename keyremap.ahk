@@ -40,9 +40,9 @@ RControl::CapsLock
 Escape::`
 
 ; volume
-~Tab & +::Volume_Up
-~Tab & -:: Volume_Down
-~Tab & backSpace::Volume_Mute
+Escape & +::Volume_Up
+Escape & -:: Volume_Down
+Escape & backSpace::Volume_Mute
 
 ;mouse 
 Escape & j::
