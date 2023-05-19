@@ -1,15 +1,11 @@
-﻿#NoEnv ; Recommended for performance and compatibility with future AutoHotkey releases. ; #Warn ; Enable warnings to assist with detecting common errors. SendMode Input ; Recommended for new scripts due to its superior speed and reliability.
-SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
-
-Coordmode, Mouse, Screen
-MouseMutiplier:=1f
-RestoreTab:=False
+﻿#Requires AutoHotkey v2.0
+CoordMode "Mouse", "Screen"
+SetCapsLockState "AlwaysOff"
 
 XButton1::LShift
 XButton2::LCtrl
 
 ; arrow key
-SetCapsLockState, AlwaysOff
 
 CapsLock::Escape
 CapsLock & h::Left
@@ -37,7 +33,6 @@ CapsLock & -::F11
 CapsLock & =::F12
 
 RControl::CapsLock
-
 ;` key rebind
 Escape::`
 
@@ -47,95 +42,104 @@ Escape & -:: Volume_Down
 Escape & backSpace::Volume_Mute
 
 ;mouse 
-Escape & j::
+
+MouseMutiplier := 1
+Escape & j::{
     Loop{
         If GetkeyState("j","P"){
-            MouseGetPos, X, Y
-            Y+=5*MouseMutiplier
+            MouseGetPos &X, &Y
+            Y:=Y + 5*MouseMutiplier
             MouseMutiplier+=0.2
-            DllCall("SetCursorPos", "int", X, "int", Y)
-            Sleep, 15
+            DllCall("SetCursorPos", "int", X, "int", Y) 
+            Sleep 15
         }
         Else{
-            MouseMutiplier=1
+            global MouseMutiplier:=1
             Break
         }
     }
-Return 
+    Return 
 
-Escape & k::
+}
+
+Escape & k::{
     Loop{
         If GetkeyState("k","P"){
-            MouseGetPos, X, Y
-            Y-=5*MouseMutiplier
+            MouseGetPos &X, &Y
+            Y:=Y - 5*MouseMutiplier
             MouseMutiplier+=0.2
-            DllCall("SetCursorPos", "int", X, "int", Y)
-            Sleep, 15
+            DllCall("SetCursorPos", "int", X, "int", Y) 
+            Sleep 15
         }
         Else{
-            MouseMutiplier=1
+            global MouseMutiplier:=1
             Break
         }
     }
-Return
+    Return 
+}
 
-Escape & h::
+Escape & h::{
     Loop{
         If GetkeyState("h","P"){
-            MouseGetPos, X, Y
-            X-=5*MouseMutiplier
+            MouseGetPos &X, &Y
+            X:=X-5*MouseMutiplier
             MouseMutiplier+=0.2
             DllCall("SetCursorPos", "int", X, "int", Y)
-            Sleep, 15
+            Sleep 15
         }
         Else{
-            MouseMutiplier=1
+            global MouseMutiplier:=1
             Break
         }
     }
-Return
-
-Escape & l::
+    Return
+}
+Escape & l::{
     Loop{
         If GetkeyState("l","P"){
-            MouseGetPos, X, Y
-            X+=5*MouseMutiplier
+            MouseGetPos &X, &Y
+            X:=X+5*MouseMutiplier
             MouseMutiplier+=0.2
             DllCall("SetCursorPos", "int", X, "int", Y)
-            Sleep, 15
+            Sleep 15
         }
         Else{
-            MouseMutiplier=1
+            global MouseMutiplier:=1
             Break
         }
     }
-Return
+    Return
+}
 
-Escape & f:: 
+Escape & f:: {
     Loop{
         If GetkeyState("f","P"){
-            Send, {WheelUp} 
-            Sleep, 100
+            Send "{WheelUp}" 
+            Sleep 100
         }
         Else{
             Break
         }
     }
-Return
-Escape & b::
+    Return
+}
+Escape & b::{
     Loop{
         If GetkeyState("b","P"){
-            Send, {WheelDown} 
-            Sleep, 100
+            Send "{WheelDown}" 
+            Sleep 100
         }
         Else{
             Break
         }
     }
-Return
-Escape & Space:: 
-    Click,D 
-    KeyWait,Space
-    Click,U
-Return
-Escape & RAlt::Click,Right
+    Return
+}
+Escape & Space::{ 
+    Click "Down" 
+    KeyWait "Space"
+    Click "Up"
+    Return
+}
+Escape & RAlt::Click "Right"
