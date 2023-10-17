@@ -2,8 +2,9 @@
 CoordMode "Mouse", "Screen"
 SetCapsLockState "AlwaysOff"
 
-XButton1::LShift
-XButton2::LCtrl
+;buttons for FF14
+;XButton1::LShift 
+;XButton2::LCtrl
 
 ; arrow key
 
